@@ -7,15 +7,15 @@ public class CatMovement : MonoBehaviour
 
     void Update()
     {
-        // Leer input del teclado
-        float horizontal = Input.GetAxisRaw("Horizontal"); // A (-1), D (+1)
-        float vertical = Input.GetAxisRaw("Vertical");     // W (+1), S (-1)
-
-        // Convertir input a coordenadas de una vista superior
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        
         moveDirection = new Vector3(horizontal - vertical, 0, vertical + horizontal).normalized;
-
-        // Aplicar el movimiento
         transform.position += moveDirection * speed * Time.deltaTime;
-    }
 
+        if (moveDirection != Vector3.zero)
+        {
+            
+        }
+    }
 }
