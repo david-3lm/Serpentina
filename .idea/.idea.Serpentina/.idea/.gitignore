@@ -2,8 +2,6 @@
 /shelf/
 /workspace.xml
 # Rider ignored files
-/modules.xml
-/projectSettingsUpdater.xml
 /contentModel.xml
 /.idea.Serpentina.iml
 # Editor-based HTTP Client requests
