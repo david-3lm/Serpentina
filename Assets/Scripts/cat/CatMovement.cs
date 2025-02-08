@@ -1,23 +1,19 @@
 using UnityEngine;
 
-public class CatMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private float originalSpeed = 5f;
-    [SerializeField] private float rotationSpeed = 10f;
-    [SerializeField] private float speedBoost = 10f; // Aumento de velocidad
-    [SerializeField] private IA_Patrol ia_patrol;
-    
+    public float speed = 5f;
+    public float rotationSpeed = 10f; // Para que rote suavemente
     private Vector3 moveDirection;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
     private Quaternion targetRotation;
+    private bool facingRight = true;
 
     void Start()
     {
-        if (ia_patrol != null)
-        {
-            ia_patrol.OnPlayerDetected += IncreaseSpeed;
-            ia_patrol.OnPlayerLost += ResetSpeed;
-        }
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -27,34 +23,21 @@ public class CatMovement : MonoBehaviour
 
         moveDirection = new Vector3(horizontal - vertical, 0, vertical + horizontal).normalized;
 
-        if (horizontal != 0)
-        {
-            float angle = horizontal < 0 ? 132f : -48f;
-            targetRotation = Quaternion.Euler(0, angle, 0);
-        }
-
-        if (Quaternion.Angle(transform.rotation, targetRotation) > 180f)
-            targetRotation = Quaternion.Euler(0, targetRotation.eulerAngles.y - 360f, 0);
+        animator.SetBool("isWalking", moveDirection != Vector3.zero);
         
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        transform.position += moveDirection * speed * Time.deltaTime;
-    }
-
-    void IncreaseSpeed()
-    {
-        speed = speedBoost;
-    }
-
-    void ResetSpeed()
-    {
-        speed = originalSpeed;
-    }
-    
-    void OnDestroy()
-    {
-        if (ia_patrol != null)
+        if (horizontal > 0 && !facingRight)
         {
-            ia_patrol.OnPlayerDetected -= IncreaseSpeed;
+            facingRight = true;
+            targetRotation = Quaternion.Euler(0, -40, 0);
         }
+        else if (horizontal < 0 && facingRight)
+        {
+            facingRight = false;
+            targetRotation = Quaternion.Euler(0, 140, 0);
+        }
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+        transform.position += moveDirection * speed * Time.deltaTime;
     }
 }
