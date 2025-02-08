@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
@@ -8,6 +9,9 @@ public class Desk : MonoBehaviour
 {
     [SerializeField] private float radius;
     [SerializeField] private LayerMask playerLayer;
+    
+    [SerializeField] private List<Sprite> deskSprites;
+    private SpriteRenderer spriteRenderer;
 
     public float scaleMultiplier = 1.3f; // Tamaño máximo al que se expande
     public float duration = 0.1f; // Duración total de la animación
@@ -23,9 +27,9 @@ public class Desk : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        radius = 1f;
         originalScale = transform.localScale;
         playerLight = GameObject.FindGameObjectWithTag("Spot").GetComponent<Light>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         playerIn = false;
     }
 
@@ -33,7 +37,7 @@ public class Desk : MonoBehaviour
     void Update()
     {
         Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, radius, playerLayer);
-
+        
         if (targetsInViewRadius.Length > 0)
         {
             if (playerIn) return;
@@ -49,6 +53,7 @@ public class Desk : MonoBehaviour
         {
             if (!playerIn) return;
             playerIn = false;
+            spriteRenderer.sprite = deskSprites[0];
             player.GetComponent<SpriteRenderer>().enabled = true;
             if (coroutine != null)
                 StopCoroutine(coroutine);
@@ -74,6 +79,7 @@ public class Desk : MonoBehaviour
         while (elapsedTime < duration / 2)
         {
             float t = elapsedTime / (duration / 2);
+            spriteRenderer.sprite = deskSprites[1];
             transform.localScale = Vector3.Lerp(originalScale, originalScale * scaleMultiplier, t);
             transform.rotation = Quaternion.Lerp(originalRotation, targetRotation, t);
             elapsedTime += Time.deltaTime;
@@ -87,6 +93,7 @@ public class Desk : MonoBehaviour
         while (elapsedTime < duration / 2)
         {
             float t = elapsedTime / (duration / 2);
+            spriteRenderer.sprite = deskSprites[2];
             transform.localScale = Vector3.Lerp(originalScale * scaleMultiplier, originalScale, t);
             transform.rotation = Quaternion.Lerp(targetRotation, targetRotation2, t);
             elapsedTime += Time.deltaTime;
@@ -96,8 +103,21 @@ public class Desk : MonoBehaviour
         transform.rotation = originalRotation;
 
         isPulsing = false;
+        coroutine = StartCoroutine(AnimInside());
     }
 
+    IEnumerator AnimInside()
+    {
+        while (this.coroutine != null)
+        {
+            spriteRenderer.sprite = deskSprites[3];
+            yield return new WaitForSeconds(0.4f);
+            spriteRenderer.sprite = deskSprites[4];
+            yield return new WaitForSeconds(0.4f);           
+            spriteRenderer.sprite = deskSprites[5];
+            yield return new WaitForSeconds(0.4f);           
+        }
+    }
     private IEnumerator ChangeLightRadius(float targetInnerAngle, float targetOuterAngle, float duration)
     {
 

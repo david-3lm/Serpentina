@@ -27,9 +27,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6554476796167269846}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.37206915, z: -0, w: 0.9282051}
-  m_LocalPosition: {x: -5.47, y: 3.03, z: 0.64}
-  m_LocalScale: {x: 0.61, y: 0.61, z: 0.61}
+  m_LocalRotation: {x: 0, y: -0.3720727, z: 0, w: 0.92820364}
+  m_LocalPosition: {x: 0, y: 0.84, z: 0}
+  m_LocalScale: {x: 0.15753667, y: 0.15753667, z: 0.15753667}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,7 +108,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 13
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -124,9 +124,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755b03f2876b3745081701c1a20d543e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1
+  radius: 2
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  deskSprites:
+  - {fileID: 21300000, guid: 86c0c175b53d5c0f79f7a3c07cb8eb3d, type: 3}
+  - {fileID: 21300000, guid: 492a6746a4af7fab48ceee56d83b9224, type: 3}
+  - {fileID: 21300000, guid: 6401b9ec67ba35a8aaeb77e2ecd13c65, type: 3}
+  - {fileID: 21300000, guid: 46e5c424c43e3745bb1ecdbf72233180, type: 3}
+  - {fileID: 21300000, guid: f32fc8821ed1e23e68de7eff75a74fe6, type: 3}
+  - {fileID: 21300000, guid: a4104d0266c72809b89b6f47b6e05a80, type: 3}
   scaleMultiplier: 1.2
   duration: 0.2
