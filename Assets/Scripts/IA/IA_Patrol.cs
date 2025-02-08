@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System;
+using Random = UnityEngine.Random;
 
 public class IA_Patrol : MonoBehaviour
 {
@@ -10,16 +11,18 @@ public class IA_Patrol : MonoBehaviour
     private NavMeshAgent agent;
     
     [Header("Vision")]
-    [SerializeField] private float visionRadius = 10f; // Radio de visión
-    [SerializeField] private float visionAngle = 45f; // Mitad del ángulo del cono
-    [SerializeField] private Transform player; // Referencia al jugador
+    [SerializeField] private float visionRadius = 10f;
+    [SerializeField] private float visionAngle = 45f;
+    [SerializeField] private Transform player;
+    
     [Header("Layers")]
-    [SerializeField] private LayerMask playerLayer; // Capa del jugador
-    [SerializeField] private LayerMask obstacleLayer; // Capa de obstáculos
+    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private LayerMask obstacleLayer;
 
     [Header("Speed")]
     [SerializeField] private float patrolSpeed = 5f;
     [SerializeField] private float followSpeed = 10f;
+    [SerializeField] private float delay = 1f;
     
     public event Action OnPlayerDetected;
     public event Action OnPlayerLost;
@@ -65,7 +68,9 @@ public class IA_Patrol : MonoBehaviour
             agent.speed = patrolSpeed;
 
         if (!(Vector3.Distance(transform.position, waypoints[idx].position) < .1f)) return;
-        
+        delay -= Time.deltaTime;
+        if (delay > 0) return;
+        delay = Random.Range(.5f, 1.5f);
         idx++;
         if (idx >= waypoints.Count)
             idx = 0;
