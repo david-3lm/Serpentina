@@ -14,9 +14,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: f0b908f4f724c74b89dc9d69ad287b41
+  - enabled: 1
+    path: Assets/Scenes/Victoria.unity
+    guid: 5d6ddafa6e76348e2b12214307512abe
   - enabled: 0
     path: Assets/Scenes/ManuScene.unity
     guid: d6e78ec61ee31f0d581a7c09b0a8444a
+  - enabled: 1
+    path: Assets/Scenes/Derrota.unity
+    guid: 7a8b183d6e26b5c30b395260bd0fd27b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

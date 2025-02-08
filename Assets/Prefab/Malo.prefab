@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6437767872943004275}
   - component: {fileID: 8929427428736031010}
   - component: {fileID: 4305529783780211918}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 52416760306978274}
   - component: {fileID: 203417861993792589}
   - component: {fileID: 7832172286163916699}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Malo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

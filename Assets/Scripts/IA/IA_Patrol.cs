@@ -60,6 +60,9 @@ public class IA_Patrol : MonoBehaviour
                     patrolLight.enabled = true;
                     OnPlayerDetected?.Invoke();
                     UIManager.Instance.BroadcastMsg("Vaya disfraz de gato más guapo, a ver que me acerque a verlo");
+                    Debug.Log(Vector3.Distance(transform.position, target.position));
+                    if (Vector3.Distance(transform.position, target.position) <= 1.5f)
+                        MenuManager.Instance.ChangeScene("Derrota");
                 }
             }
             else
@@ -80,7 +83,15 @@ public class IA_Patrol : MonoBehaviour
         if (idx >= waypoints.Count)
             idx = 0;
     }
-    
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.layer == playerLayer)
+        {
+            MenuManager.Instance.ChangeScene("Derrota");
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
