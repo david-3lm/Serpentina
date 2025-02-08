@@ -2390,6 +2390,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gato
       objectReference: {fileID: 0}
+    - target: {fileID: 8212522330509124605, guid: faf78812a6353252b82caa87b533fa5e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 67045654e5d28c9cbb1a9372d181d1a7, type: 3}
     - target: {fileID: 8662146245336553758, guid: faf78812a6353252b82caa87b533fa5e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
