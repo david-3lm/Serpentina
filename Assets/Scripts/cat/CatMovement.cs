@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour
         }
         else if (vertical > 0 && !facingRight)
         {
-            facingRight = true;
             animator.SetBool("backWalk", true);
             targetRotation = Quaternion.Euler(0, 140, 0);
         }
