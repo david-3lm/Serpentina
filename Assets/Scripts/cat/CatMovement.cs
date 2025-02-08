@@ -25,28 +25,33 @@ public class PlayerController : MonoBehaviour
         
         animator.SetBool("isWalking", moveDirection != Vector3.zero);
         
-        if (horizontal > 0 && !facingRight)
+        if (horizontal > 0)
         {
             facingRight = true;
             animator.SetBool("backWalk", false);
             targetRotation = Quaternion.Euler(0, -40, 0);
         }
-        else if (horizontal < 0 && facingRight)
+        else if (horizontal < 0)
         {
             facingRight = false;
             animator.SetBool("backWalk", false);
             targetRotation = Quaternion.Euler(0, 140, 0);
         }
-        else if (vertical > 0 && !facingRight)
+        else if (vertical > 0)
         {
             animator.SetBool("backWalk", true);
             targetRotation = Quaternion.Euler(0, 140, 0);
         }
-        else if (vertical < 0 && facingRight)
+        else if (vertical < 0)
         {
             facingRight = true;
             animator.SetBool("backWalk", false);
-            targetRotation = Quaternion.Euler(0, 140, 0);
+            targetRotation = Quaternion.Euler(0, -40, 0);
+        }
+        else if (vertical > 0 && horizontal < 0)
+        {
+            animator.SetBool("backWalk", true);
+            
         }
         
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
