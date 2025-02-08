@@ -9,13 +9,15 @@ public class IA_Patrol : MonoBehaviour
     private int idx;
     private NavMeshAgent agent;
     
+    [Header("Vision")]
     [SerializeField] private float visionRadius = 10f; // Radio de visión
     [SerializeField] private float visionAngle = 45f; // Mitad del ángulo del cono
     [SerializeField] private Transform player; // Referencia al jugador
+    [Header("Layers")]
     [SerializeField] private LayerMask playerLayer; // Capa del jugador
     [SerializeField] private LayerMask obstacleLayer; // Capa de obstáculos
 
-    
+    [Header("Speed")]
     [SerializeField] private float patrolSpeed = 5f;
     [SerializeField] private float followSpeed = 10f;
     
@@ -50,11 +52,14 @@ public class IA_Patrol : MonoBehaviour
                     agent.speed = followSpeed;
                     agent.SetDestination(target.position);
                     OnPlayerDetected?.Invoke();
-                    Debug.Log("Personaje a la vista!!!");
+                    UIManager.Instance.BroadcastMsg("Vaya disfraz de gato más guapo, a ver que me acerque a verlo");
                 }
             }
             else
+            {
                 OnPlayerLost?.Invoke();
+                UIManager.Instance.BroadcastMsg("");
+            }
         }
         else
             agent.speed = patrolSpeed;
