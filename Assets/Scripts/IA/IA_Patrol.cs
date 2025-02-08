@@ -24,6 +24,8 @@ public class IA_Patrol : MonoBehaviour
     [SerializeField] private float followSpeed = 10f;
     [SerializeField] private float delay = 1f;
     
+    private Light patrolLight;
+    
     public event Action OnPlayerDetected;
     public event Action OnPlayerLost;
     
@@ -34,6 +36,7 @@ public class IA_Patrol : MonoBehaviour
         idx = 0;
         agent = GetComponent<NavMeshAgent>();
         agent.speed = patrolSpeed;
+        patrolLight = GetComponentInChildren<Light>();
     }
 
     // Update is called once per frame
@@ -54,6 +57,7 @@ public class IA_Patrol : MonoBehaviour
                     // Se detecta al jugador
                     agent.speed = followSpeed;
                     agent.SetDestination(target.position);
+                    patrolLight.enabled = true;
                     OnPlayerDetected?.Invoke();
                     UIManager.Instance.BroadcastMsg("Vaya disfraz de gato más guapo, a ver que me acerque a verlo");
                 }
@@ -61,6 +65,7 @@ public class IA_Patrol : MonoBehaviour
             else
             {
                 OnPlayerLost?.Invoke();
+                patrolLight.enabled = false;
                 UIManager.Instance.BroadcastMsg("");
             }
         }
