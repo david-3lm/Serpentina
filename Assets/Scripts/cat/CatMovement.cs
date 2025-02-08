@@ -48,11 +48,6 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("backWalk", false);
             targetRotation = Quaternion.Euler(0, -40, 0);
         }
-        else if (vertical > 0 && horizontal < 0)
-        {
-            animator.SetBool("backWalk", true);
-            
-        }
         
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         
