@@ -21,7 +21,8 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         
-        moveDirection = new Vector3(horizontal, 0, vertical).normalized;
+        moveDirection = new Vector3(horizontal - vertical, 0, vertical + horizontal).normalized;
+
         
         animator.SetBool("isWalking", moveDirection != Vector3.zero);
         
