@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 public class IA_Patrol : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class IA_Patrol : MonoBehaviour
     
     [SerializeField] private float patrolSpeed = 5f;
     [SerializeField] private float followSpeed = 10f;
+    
+    public event Action OnPlayerDetected;
+    public event Action OnPlayerLost;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -45,9 +49,12 @@ public class IA_Patrol : MonoBehaviour
                     // Se detecta al jugador
                     agent.speed = followSpeed;
                     agent.SetDestination(target.position);
+                    OnPlayerDetected?.Invoke();
                     Debug.Log("Personaje a la vista!!!");
                 }
             }
+            else
+                OnPlayerLost?.Invoke();
         }
         else
             agent.speed = patrolSpeed;
