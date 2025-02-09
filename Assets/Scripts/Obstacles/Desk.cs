@@ -42,6 +42,7 @@ public class Desk : MonoBehaviour
         {
             if (playerIn) return;
             playerIn = true;
+            AudioManager.Instance.PlayClip(4);
             targetsInViewRadius[0].gameObject.GetComponent<SpriteRenderer>().enabled = false;
             player = targetsInViewRadius[0].gameObject;
             if (coroutine != null)

@@ -59,10 +59,13 @@ public class IA_Patrol : MonoBehaviour
                     agent.SetDestination(target.position);
                     patrolLight.enabled = true;
                     OnPlayerDetected?.Invoke();
-                    UIManager.Instance.BroadcastMsg("Vaya disfraz de gato más guapo, a ver que me acerque a verlo");
+                    AudioManager.Instance.PlayClip(1);
                     //Debug.Log(Vector3.Distance(transform.position, target.position));
-                    if (Vector3.Distance(transform.position, target.position) <= 1.5f)
+                    if (Vector3.Distance(transform.position, target.position) <= 4.5f)
+                    {
+                        AudioManager.Instance.PlayClip(3);
                         MenuManager.Instance.ChangeScene("Derrota");
+                    }
                 }
             }
             else

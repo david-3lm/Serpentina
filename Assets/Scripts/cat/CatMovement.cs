@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
             enemy.OnPlayerDetected += StartRunning;
             enemy.OnPlayerLost += StopRunning;
         }
+
     }
 
     void Update()
@@ -81,6 +82,7 @@ public class PlayerController : MonoBehaviour
         
         if (gatoInteractuar != null && gatoInteractuar.hasFish == true && Vector3.Distance(transform.position, zonaFinal.position) < distanciaMinima)
         {
+            AudioManager.Instance.PlayClip(2);
             SceneManager.LoadScene("Victoria");
         }
         

@@ -24,6 +24,7 @@ public class GatoInteractuar : MonoBehaviour
     {
         if (Vector3.Distance(this.gameObject.transform.position, fish.transform.position) < 5f)
         {
+            UIManager.Instance.BroadcastMsg("Pulsa espacio para recoger la sardina");
             puedeRecoger = true;
             Debug.Log("Distancia: ");
         }
@@ -36,6 +37,8 @@ public class GatoInteractuar : MonoBehaviour
 
     void RecogerObjeto()
     {
+        AudioManager.Instance.PlayClip(5);
+        UIManager.Instance.BroadcastMsg("");
         fish.GetComponent<SpriteRenderer>().sprite = mesaSinObjeto;
         animator.SetBool("hasFish", true);
         hasFish = true;
