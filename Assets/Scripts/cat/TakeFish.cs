@@ -26,7 +26,6 @@ public class GatoInteractuar : MonoBehaviour
         {
             UIManager.Instance.BroadcastMsg("Pulsa espacio para recoger la sardina");
             puedeRecoger = true;
-            Debug.Log("Distancia: ");
         }
         else
         {

@@ -61,7 +61,7 @@ public class IA_Patrol : MonoBehaviour
                     OnPlayerDetected?.Invoke();
                     AudioManager.Instance.PlayClip(1);
                     //Debug.Log(Vector3.Distance(transform.position, target.position));
-                    if (Vector3.Distance(transform.position, target.position) <= 4.5f)
+                    if (Vector3.Distance(transform.position, target.position) <= 3.5f)
                     {
                         AudioManager.Instance.PlayClip(3);
                         MenuManager.Instance.ChangeScene("Derrota");
