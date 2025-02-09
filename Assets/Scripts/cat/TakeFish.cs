@@ -13,6 +13,7 @@ public class GatoInteractuar : MonoBehaviour
     public bool hasFish;
     public GameObject fish;
     public TextMeshProUGUI salidaTexto;
+    public TextMeshProUGUI espacioTexto;
     
     void Start()
     {
@@ -30,12 +31,13 @@ public class GatoInteractuar : MonoBehaviour
     {
         if (Vector3.Distance(this.gameObject.transform.position, fish.transform.position) < 5f)
         {
-            UIManager.Instance.BroadcastMsg("Pulsa espacio para recoger la sardina");
+            espacioTexto.gameObject.SetActive(true);
             puedeRecoger = true;
         }
         else
         {
-            puedeRecoger = false;
+            espacioTexto.gameObject.SetActive(false);
+            puedeRecoger = false;            
             objetoCercano = null;
         }
     }
@@ -43,7 +45,7 @@ public class GatoInteractuar : MonoBehaviour
     void RecogerObjeto()
     {
         AudioManager.Instance.PlayClip(5);
-        UIManager.Instance.BroadcastMsg("");
+        espacioTexto.gameObject.SetActive(false);
         fish.GetComponent<SpriteRenderer>().sprite = mesaSinObjeto;
         animator.SetBool("hasFish", true);
         hasFish = true;
