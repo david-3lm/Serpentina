@@ -9,6 +9,7 @@ public class GatoInteractuar : MonoBehaviour
     private GameObject objetoCercano;
     public Sprite mesaSinObjeto;
     public Animator animator;
+    public bool hasFish;
 
     void Update()
     {
@@ -37,6 +38,7 @@ public class GatoInteractuar : MonoBehaviour
     {
         objetoCercano.GetComponent<SpriteRenderer>().sprite = mesaSinObjeto;
         animator.SetBool("hasFish", true);
+        hasFish = true;
     }
     
     void OnDrawGizmos()

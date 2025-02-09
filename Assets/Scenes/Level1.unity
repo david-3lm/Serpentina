@@ -7213,6 +7213,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gato
       objectReference: {fileID: 0}
+    - target: {fileID: 7560003007308690236, guid: faf78812a6353252b82caa87b533fa5e, type: 3}
+      propertyPath: mesaSinObjeto
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8662146245336553758, guid: faf78812a6353252b82caa87b533fa5e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.4
@@ -13851,6 +13855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1977147314}
   - component: {fileID: 1977147315}
+  - component: {fileID: 1977147316}
   m_Layer: 8
   m_Name: sardina
   m_TagString: Untagged
@@ -13867,7 +13872,7 @@ Transform:
   m_GameObject: {fileID: 1977147313}
   serializedVersion: 2
   m_LocalRotation: {x: 0.11196011, y: -0.0210705, z: 0.18374556, w: 0.9763496}
-  m_LocalPosition: {x: -0.22, y: 2.71, z: -0.71}
+  m_LocalPosition: {x: -0.09, y: 2.6, z: -1.72}
   m_LocalScale: {x: 0.28926963, y: 0.28926963, z: 0.28926963}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13928,6 +13933,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1977147316
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977147313}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 23.88, y: 16.685682}
+    newSize: {x: 23.88, y: 16.685682}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 35.2, y: 26}
+  m_EdgeRadius: 0
 --- !u!1 &1988531064
 GameObject:
   m_ObjectHideFlags: 0

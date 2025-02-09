@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Quaternion targetRotation;
     private bool facingRight = true;
+    
+    [SerializeField] private Transform zonaFinal;
+    [SerializeField] private float distanciaMinima = 7f;
+    [SerializeField] private GatoInteractuar gatoInteractuar; 
 
     void Start()
     {
@@ -73,6 +78,11 @@ public class PlayerController : MonoBehaviour
 
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         transform.position += moveDirection * currentSpeed * Time.deltaTime;
+        
+        if (gatoInteractuar != null && gatoInteractuar.hasFish == true && Vector3.Distance(transform.position, zonaFinal.position) < distanciaMinima)
+        {
+            SceneManager.LoadScene("Victoria");
+        }
     }
 
     private void StartRunning()

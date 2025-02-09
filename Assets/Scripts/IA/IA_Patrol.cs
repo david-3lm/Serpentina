@@ -84,14 +84,6 @@ public class IA_Patrol : MonoBehaviour
             idx = 0;
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.layer == playerLayer)
-        {
-            MenuManager.Instance.ChangeScene("Derrota");
-        }
-    }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
