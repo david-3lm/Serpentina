@@ -75,7 +75,7 @@ public class IA_Patrol : MonoBehaviour
         else
             agent.speed = patrolSpeed;
 
-        if (!(Vector3.Distance(transform.position, waypoints[idx].position) < .1f)) return;
+        if (!(Vector3.Distance(transform.position, waypoints[idx].position) < 5.1f)) return;
         delay -= Time.deltaTime;
         if (delay > 0) return;
         delay = Random.Range(.5f, 1.5f);
