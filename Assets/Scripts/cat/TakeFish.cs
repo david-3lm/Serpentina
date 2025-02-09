@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using TMPro;
 
 public class GatoInteractuar : MonoBehaviour
 {
@@ -11,7 +12,12 @@ public class GatoInteractuar : MonoBehaviour
     public Animator animator;
     public bool hasFish;
     public GameObject fish;
+    public TextMeshProUGUI salidaTexto;
     
+    void Start()
+    {
+        salidaTexto.gameObject.SetActive(false);
+    }
 
     void Update()
     {
@@ -41,6 +47,7 @@ public class GatoInteractuar : MonoBehaviour
         fish.GetComponent<SpriteRenderer>().sprite = mesaSinObjeto;
         animator.SetBool("hasFish", true);
         hasFish = true;
+        salidaTexto.gameObject.SetActive(true);
     }
     
     void OnDrawGizmos()
