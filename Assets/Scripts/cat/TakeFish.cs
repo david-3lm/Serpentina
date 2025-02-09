@@ -10,6 +10,8 @@ public class GatoInteractuar : MonoBehaviour
     public Sprite mesaSinObjeto;
     public Animator animator;
     public bool hasFish;
+    public GameObject fish;
+    
 
     void Update()
     {
@@ -20,12 +22,10 @@ public class GatoInteractuar : MonoBehaviour
 
     void DetectarObjetosEnRango()
     {
-        Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, visionRadius, playerLayer);
-
-        if (targetsInViewRadius.Length > 0)
+        if (Vector3.Distance(this.gameObject.transform.position, fish.transform.position) < 5f)
         {
             puedeRecoger = true;
-            objetoCercano = targetsInViewRadius[0].gameObject;
+            Debug.Log("Distancia: ");
         }
         else
         {
@@ -36,7 +36,7 @@ public class GatoInteractuar : MonoBehaviour
 
     void RecogerObjeto()
     {
-        objetoCercano.GetComponent<SpriteRenderer>().sprite = mesaSinObjeto;
+        fish.GetComponent<SpriteRenderer>().sprite = mesaSinObjeto;
         animator.SetBool("hasFish", true);
         hasFish = true;
     }
@@ -44,6 +44,6 @@ public class GatoInteractuar : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, visionRadius);
+        Gizmos.DrawWireSphere(transform.position, visionRadius * 2);
     }
 }

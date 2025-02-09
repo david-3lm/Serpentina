@@ -83,6 +83,37 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene("Victoria");
         }
+        
+    }
+    
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Alfombra_roja"))
+        {
+            animator.SetBool("alfombra_roja", true);
+            Debug.Log("En alfombra_roja");
+        }
+            
+        if (other.CompareTag("Alfombra_azul"))
+        {
+            animator.SetBool("alfombra_azul", true);
+            Debug.Log("En alfombra_azul");
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Alfombra_roja"))
+        {
+            animator.SetBool("alfombra_roja", false);
+            Debug.Log("En alfombra_roja");
+        }
+            
+        if (other.CompareTag("Alfombra_azul"))
+        {
+            animator.SetBool("alfombra_azul", false);
+            Debug.Log("En alfombra_azul");
+        }
     }
 
     private void StartRunning()
