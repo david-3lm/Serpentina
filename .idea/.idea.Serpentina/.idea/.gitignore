@@ -2,8 +2,10 @@
 /shelf/
 /workspace.xml
 # Rider ignored files
+/modules.xml
 /contentModel.xml
-/.idea.Serpentina.iml
+/.idea.serpentina.iml
+/projectSettingsUpdater.xml
 # Editor-based HTTP Client requests
 /httpRequests/
 # Datasource local storage ignored files
